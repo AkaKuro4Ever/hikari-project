@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :comments
-  resources :users, only: [:show] do
+  resources :users, only: [:create, :show, :edit, :destroy] do
     resources :books, only: [:new, :show, :index]
   end
   resources :genres

@@ -3,6 +3,11 @@ class UsersController < ApplicationController
   def new
   end
 
+  def create
+    user = User.new(user_params)
+    #do validation here
+  end
+
   def show
   end
 
