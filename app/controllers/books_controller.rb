@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
 
   def new
-    @book = Book.new(user_ids: book_params[:user_ids])
+    @book = Book.new(user_ids: params[:user_ids])
   end
 
   def create
