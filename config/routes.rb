@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   end
   resources :genres
   resources :authors
-  resources :books
+  resources :books, only: [:index, :show]
 
   get '/signup' => 'users#new'
   get '/login' => 'sessions#create'
