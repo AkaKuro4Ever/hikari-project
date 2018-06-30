@@ -8,5 +8,5 @@ class Book < ApplicationRecord
   has_many :users, through: :user_books
 
   validates :title, presence: true
-  validates :author_ids, presence: true
+  validates :user_ids, presence: true
 end

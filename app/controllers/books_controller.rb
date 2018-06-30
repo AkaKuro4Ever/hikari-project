@@ -1,5 +1,9 @@
 class BooksController < ApplicationController
 
+  def index
+    @books = Book.all
+  end
+
   def new
     @book = Book.new(user_ids: params[:user_ids])
   end
@@ -12,6 +16,7 @@ class BooksController < ApplicationController
     else
       @book.save
       redirect_to book_path(@book)
+    end
   end
 
   def show

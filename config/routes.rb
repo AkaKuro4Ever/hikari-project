@@ -5,9 +5,10 @@ Rails.application.routes.draw do
   end
   resources :genres, only: [:index, :show]
   resources :books, only: [:index, :show]
-
+  resources :sessions, only: [:create]
+  #Remember to put indexes for each genre
   get '/signup' => 'users#new'
-  get '/login' => 'sessions#create'
+  get '/login' => 'sessions#new'
   post '/logout' => 'sessions#destroy'
   root 'application#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

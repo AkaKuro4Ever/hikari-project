@@ -1,0 +1,7 @@
+<%@books.each do |book|%>
+  <h3><%=book.title%></h3>
+  <%book.users.uniq.each do |user|%>
+    <%=user.username%>
+  <%end%>
+  <%=book.summary%>
+<%end%>
