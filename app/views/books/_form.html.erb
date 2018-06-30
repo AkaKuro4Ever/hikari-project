@@ -10,9 +10,11 @@
 <%=form_for @book do |f|%>
   <%=f.label :title%>
   <%=f.text_field :title%>
+  <br></br>
   <%=f.label :summary%>
-  <%=f.text_field :summary%>
+  <%=f.text_area :summary%>
   <%=f.hidden_field :user_ids%>
+  <br></br>
   <%=f.submit%>
 
 <%end%>

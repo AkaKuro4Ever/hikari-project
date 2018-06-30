@@ -1,20 +1,11 @@
 module ApplicationHelper
 
-  # def error_messages
-#    if self.errors.any?
-# 	  <div id="error_explanation">
-# 	    <h2>
-# 	      <%= pluralize(@article.errors.count, "error") %>
-# 	      prohibited this article from being saved:
-# 	    </h2>
-#
-# 	    <ul>
-# 	    <% @article.errors.full_messages.each do |msg| %>
-# 	      <li><%= msg %></li>
-# 	    <% end %>
-# 	    </ul>
-# 	  </div>
-# 	<% end %>
-#
-#   end
+  def current_user
+    User.find_by(id: session[:user_id]) if session[:user_id]
+  end
+
+  def logged_in?
+    !!current_user
+  end
+  
 end

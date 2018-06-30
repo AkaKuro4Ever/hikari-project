@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resources :books, only: [:new, :show, :index, :edit]
   end
   resources :genres, only: [:index, :show]
-  resources :books, only: [:index, :show]
+  resources :books, only: [:index, :show, :create]
   resources :sessions, only: [:create]
   #Remember to put indexes for each genre
   get '/signup' => 'users#new'
@@ -12,8 +12,6 @@ Rails.application.routes.draw do
   post '/logout' => 'sessions#destroy'
   root 'application#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
-#IF they're a writer, they should have access to 'writer.hikari.com/users/1' writer portal or hikari.com/users/writer/1'
 
 # The priority is based upon order of creation: first created -> highest priority.
 # See how all your routes lay out with "rake routes".
