@@ -4,6 +4,20 @@ The more than one author
 
 Things to Do:
 
+[] Validations for User
+[] Validations for New Book
+[] Creating New Book (Must be nested only - check if book can be initialized on its own)
+[] Creating New User
+[] Sign up and Log In and Log Out
+[] Validations for Genre
+[] Genre Creation
+[] Creating Basic Layout Page for all pages
+[] Getting functional view pages
+[] View Pages are limited by authorization (User Partials and Locals, which go in view folders)
+[] Figure out User being Writer or Reader
+[] Getting comments functional
+[] Figure out a user collection for books they're following vs books they've written (currently, user.books == books that they've written)
+  [] We'll need links for all book editing vs links for all books that they're following
 Get Login and Signup functional
 Get authorizations on what pages can be seen when logged in and when not
 Validations and forms on creating a new book
@@ -89,3 +103,9 @@ Use the best technical vocabulary you can. You will be expected to present yours
 Explain the details - this is your application, you should have a very thorough understanding of how each piece works.
 Curiosity and willingness to learn are hugely valued in our industry. If there are things you don’t understand, then ask questions at the end of the review for more information. Your instructor will be able to point you to the appropriate section lead or technical coach for more information.
 Pretend you’re interviewing for a job as a Rails developer. We’re looking for competent, passionate people who are excited to learn, build, and grow. You won’t be expected to be an expert, but people who will be good to work with.
+
+User_controller:
+# def create
+#   @user = User.new(user_params)
+#   @user.save ? (session[:user_id] = @user.id; redirect_to user_path(@user)) : (render :new)
+# end
