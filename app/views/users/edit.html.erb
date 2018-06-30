@@ -1,0 +1,13 @@
+<%=if logged_in? && current_user==@user%>
+  <h3>Welcome back, <%=@user.username%></h3>
+  <br></br>
+  <%=form_for @user do |f|%>
+  <%= render partial: "form", :locals=>{:f=>f} %>
+  <%=render 'form'%>
+  <br></br>
+  <%=f.submit %>
+  <%end%>
+<%else%>
+  <h2><%=@user.username%></h2>
+  Sorry, you are not authorized to view this page.
+<%end%>
