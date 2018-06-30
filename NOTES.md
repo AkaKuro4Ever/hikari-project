@@ -2,6 +2,13 @@ Ask about the linking of User/Genres or Author/Genres
 Ask about the necessity of the Author/Genre relationship in general and expansion
 The more than one author
 
+Things to Do:
+
+Get Login and Signup functional
+Get authorizations on what pages can be seen when logged in and when not
+Validations and forms on creating a new book
+
+*** Need to ask about users/new route and why it exists. How to deal with obvious route urls if you don't want them to exist? (ex. books/new)***
 
 OVERVIEW
 In this lesson you're going to build a complete Ruby on Rails application that manages related data through complex forms and RESTful routes. The goal of the application is to build a Content Management System, whether the content being managed is Blog Posts, Recipes, a Library of Resources, or any domain model that lends itself to these requirements (the majority of ideas you could come up with would probably meet the requirements).

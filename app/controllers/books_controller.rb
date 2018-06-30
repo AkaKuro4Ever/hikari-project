@@ -5,6 +5,13 @@ class BooksController < ApplicationController
   end
 
   def create
+    @book = Book.new(book_params)
+    if @book.invalid?
+
+      render :new
+    else
+      @book.save
+      redirect_to book_path(@book)
   end
 
   def show

@@ -1,11 +1,19 @@
 class UsersController < ApplicationController
 
   def new
+    @user = User.new
   end
 
   def create
-    user = User.new(user_params)
-    #do validation here
+    @user = User.new(user_params)
+    if @user.invalid?
+      render :new
+    else
+    @user.save
+    session[:user_id] = @user.id
+    binding.pry
+    redirect_to user_path(@user)
+    end
   end
 
   def show
@@ -15,6 +23,8 @@ class UsersController < ApplicationController
   end
 
   def destroy
+
+    redirect_to '/'
   end
 
   private
