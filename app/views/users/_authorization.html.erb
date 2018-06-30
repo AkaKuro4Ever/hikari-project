@@ -1,9 +1,0 @@
-<%=if logged_in? && current_user==@user%>
-  Welcome back, <%=@user.username%>
-
-Your Stories:
-  <%@user.books.each do |book|%>
-    <%=link_to book.title, edit_user_book_path(book)%>
-    <br></br>
-  <%end%>
-<%end%>

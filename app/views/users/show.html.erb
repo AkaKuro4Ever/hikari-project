@@ -1,2 +1,8 @@
-
-Welcome, <%=@user.username%>
+<%=if logged_in? && current_user==@user%>
+  <h3>Welcome back, <%=@user.username%></h3>
+  <br></br>
+  <%=render partial: 'written-story-list', locals: {user: @user}%>
+<%else%>
+  <h2><%=@user.username%></h2>
+  <%=render partial: 'story_list', locals: {user:@usere}%>
+<%end%>
