@@ -20,6 +20,7 @@ class BooksController < ApplicationController
   end
 
   def show
+    @book = Book.find_by(id: params[:id])
   end
 
   def edit
@@ -27,6 +28,16 @@ class BooksController < ApplicationController
   end
 
   def destroy
+  end
+
+  def follow
+    @book = Book.find_by(id: params[:id])
+    self.followers << current_user
+    redirect_to book_path(@book)
+  end
+
+  def unfollow
+    current_user.following.delete(Book.find(self.id)) if current_user.following.where(id: self.id)
   end
 
   private

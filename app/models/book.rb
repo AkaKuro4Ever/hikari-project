@@ -12,12 +12,4 @@ class Book < ApplicationRecord
 
   validates :title, presence: true
   validates :user_ids, presence: true
-
-    def follow
-      self.followers << current_user
-    end
-
-    def unfollow
-      current_user.following.delete(Book.find(self.id)) if current_user.following.where(id: self.id)
-    end
 end

@@ -109,3 +109,10 @@ User_controller:
 #   @user = User.new(user_params)
 #   @user.save ? (session[:user_id] = @user.id; redirect_to user_path(@user)) : (render :new)
 # end
+
+
+# def follow(book_id)
+#  following_relationships.create(following_id: book_id)
+#   end
+
+#OR def unfollow(book_id) user.following_relationships.find_by(following_id: book_id).destroy

@@ -1,2 +1,12 @@
-<h2><%=book.title%></h2>
-<h3><%=book.users.each {|user|  user.username}%></h3>
+<h2><%=@book.title%></h2>
+<h3>
+  <%=@book.users.uniq.count ==1 ? "Author:" : "Authors:"%>
+    <%@book.users.uniq.each do |user| %>
+  <%=user.username%></h3>
+  <%end%>
+
+<%if logged_in? && current_user.following.where.not(id: @book.id)%>
+  <%=link_to "Follow", follow_path%>
+<%else%>
+  <%=link_to "Unfollow", unfollow_path%>
+<%end%>
