@@ -32,14 +32,13 @@ class BooksController < ApplicationController
 
   def follow
     @book = Book.find_by(id: params[:id])
-    @book.followers << current_user
+    @book.followers << current_user if !current_user.following.find_by(id: @book.id)
     redirect_to book_path(@book)
   end
 
   def unfollow
-#    (Have to fix it so it doesn't constantly add people')
     @book = Book.find_by(id: params[:id])
-    current_user.following.delete(Book.find(@book.id)) if current_user.following.where(id: @book.id)
+    current_user.following.delete(Book.find(@book.id)) if current_user.following.find_by(id: @book.id)
     redirect_to book_path(@book)
   end
 
