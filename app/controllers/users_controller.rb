@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
 
   def show
-    @user = User.find_by(id: session[:user_id])
+    @user = User.find_by(id: params[:id])
   end
 
   def edit
@@ -28,6 +28,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:email, :username, :password, :password_confirmation)
+    params.require(:user).permit(:id, :email, :username, :password, :password_confirmation)
   end
 end

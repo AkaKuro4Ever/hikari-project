@@ -9,4 +9,6 @@
   <%=render partial: 'story_list', locals: {user: @user}%>
 <%end%>
 
-<%=link_to 'logout', logout_route, method: :post%>
+<%if logged_in?%>
+  <%=link_to 'logout', logout_path, method: :post%>
+<%end%>
