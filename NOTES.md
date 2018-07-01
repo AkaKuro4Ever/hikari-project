@@ -6,7 +6,7 @@ Things to Do:
 [] Creating New User
 [] Sign up and Log In and Log Out
 [] Validations for Genre
-[] Genre Creation
+[] Genre Creation - NOT RIGHT NOW
 [] Creating Basic Layout Page for all pages
 [] Getting functional view pages
 [] View Pages are limited by authorization (User Partials and Locals, which go in view folders)

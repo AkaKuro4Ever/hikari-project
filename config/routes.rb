@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :users, only: [:create, :show, :edit, :destroy] do
     resources :books, only: [:new, :show, :index, :edit]
   end
-  resources :genres, only: [:index, :show]
+  resources :genres, only: [:index, :create, :show]
   resources :books, only: [:index, :show, :create]
   resources :sessions, only: [:create]
   #Remember to put indexes for each genre

@@ -1,0 +1,9 @@
+  <%genre.books.each do |book|%>
+    <strong><p><%=book.title%></p></strong>
+    <%=book.users.uniq.count ==1 ? "Author:" : "Authors:"%>
+    <%book.users.uniq.each do |user|%>
+      <%=user.username%>
+    <%end%>
+    <%=book.summary%>
+    <br></br>
+  <%end%>

@@ -1,7 +1,11 @@
-<%=form_for @user do |f|%>
-  <%= render :partial => "form", :locals=>{:f=>f} %>
-  <%=f.label :password_confirmation%>
-  <%=f.text_field :password_confirmation%>
-<br></br>
-<%=f.submit %>
+<%if logged_in?%>
+  <%=link_to 'logout', logout_path, method: :post%>
+<%else%>
+  <%=form_for @user do |f|%>
+    <%= render :partial => "form", :locals=>{:f=>f} %>
+    <%=f.label :password_confirmation%>
+    <%=f.text_field :password_confirmation%>
+  <br></br>
+  <%=f.submit %>
+  <%end%>
 <%end%>
