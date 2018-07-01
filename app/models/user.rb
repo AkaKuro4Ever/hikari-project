@@ -2,13 +2,12 @@ class User < ApplicationRecord
   has_many :user_books
   has_many :books, through: :user_books
   has_many :comments
-
-  has_many :follower_relationships, foreign_key: :following_id, class_name: 'FollowingFollower'
-  has_many :followers, through: :follower_relationships, source: :follower
+  #
+  # has_many :follower_relationships, foreign_key: :following_id, class_name: 'FollowingFollower'
+  # has_many :followers, through: :follower_relationships, source: :follower
 
   has_many :following_relationships, foreign_key: :follower_id, class_name: 'FollowingFollower'
   has_many :following, through: :following_relationships, source: :following
-
 
   # has_many :followers, class_name: 'FollowingFollower', foreign_key: :following_id
   # has_many :follows, through: :followers, source: :follower
@@ -22,4 +21,5 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true, confirmation: true
   validates :password_confirmation, presence: true
+
 end
