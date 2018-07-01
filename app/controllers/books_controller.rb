@@ -25,7 +25,11 @@ class BooksController < ApplicationController
 
   def edit
     @book = Book.find_by(id: params[:id])
+    #MODIFYING NESTED RESOURCES HAS STUFF YOU NEED TO DO HERE!!
+  end
 
+  def update
+    @book = Book.find_by(id: params[:id])
     redirect_to book_path(@book)
   end
 
