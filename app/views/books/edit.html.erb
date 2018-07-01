@@ -1,10 +1,10 @@
-(After the book has been edited, redirect to the show page for the book)
+<%if logged_in? && @book.users.find {|user| user == current_user}%>
 
-<%if logged_in? && @book.users.find {|user| user == current_user%>}
 <%=form_for @book do |f|%>
   <%= render partial: "form", :locals=>{:f=>f} %>
   <%=f.submit%>
-<%end%>
+  <%end%>
+
 <%else%>
   Sorry, this page is off limits for now. Head back and read some awesome new books!
 <%end%>
