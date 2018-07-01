@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/logout' => 'sessions#destroy'
   root 'application#index'
-  post '/follow' => 'books#follow'
-  post '/unfollow' => 'books#unfollow'
+  post '/follow/:id' => 'books#follow', as: :follow
+  post '/unfollow/:id' => 'books#unfollow', as: :unfollow
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 # The priority is based upon order of creation: first created -> highest priority.
