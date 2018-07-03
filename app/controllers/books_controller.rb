@@ -12,7 +12,6 @@ class BooksController < ApplicationController
 
     @book = Book.new(book_params)
     @book.users << current_user
-    binding.pry
     if @book.invalid?
 
       render :new
