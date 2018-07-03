@@ -29,6 +29,7 @@ class BooksController < ApplicationController
   end
 
   def update
+    #Get update logic going
     @book = Book.find_by(id: params[:id])
     redirect_to book_path(@book)
   end

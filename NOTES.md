@@ -4,8 +4,11 @@ Things to Do:
 [] Validations for New Book
 [] Creating New Book (Must be nested only - check if book can be initialized on its own)
 [] Creating New User
+[] Add differentiation for user.books (for read books vs written books - something similar to follower/following??)
 [] Sign up and Log In and Log Out
 [] Validations for Genre
+[] Update a user
+[] Update a book
 [] Genre Creation - NOT RIGHT NOW
 [] Creating Basic Layout Page for all pages
 [] Getting functional view pages

@@ -20,6 +20,14 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find_by(id: params[:id])
+    #ADD EDITING LOGIC
+  end
+
+  def update
+    @user = User.find_by(id: params[:id])
+
+    redirect_to user_path(@user)
   end
 
   def destroy
