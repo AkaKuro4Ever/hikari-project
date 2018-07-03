@@ -16,10 +16,10 @@ class User < ApplicationRecord
 
 # ActiveRecord::HasManyThroughSourceAssociationNotFoundError: Could not find the source association(s) :following_followers in model FollowingFollower. Try 'has_many :followers, :through => :follower_relationships, :source => <name>'. Is it one of follower or following?
 #You don't need the foreign_keys for it to work
-  has_secure_password
-  validates :username, presence: true, uniqueness: true
-  validates :email, presence: true, uniqueness: true
-  validates :password, presence: true, confirmation: true
-  validates :password_confirmation, presence: true
+  # has_secure_password
+  # validates :username, presence: true, uniqueness: true
+  # validates :email, presence: true, uniqueness: true
+  # validates :password, presence: true, confirmation: true
+  # validates :password_confirmation, presence: true
 
 end

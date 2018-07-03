@@ -5,11 +5,14 @@ class BooksController < ApplicationController
   end
 
   def new
-    @book = Book.new(user_ids: params[:user_ids])
+    @book = Book.new(user_ids: params[:user_id])
   end
 
   def create
+
     @book = Book.new(book_params)
+    @book.users << current_user
+    binding.pry
     if @book.invalid?
 
       render :new

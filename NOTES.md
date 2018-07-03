@@ -119,3 +119,9 @@ User_controller:
 #   end
 
 #OR def unfollow(book_id) user.following_relationships.find_by(following_id: book_id).destroy
+
+
+<!-- <%= f.fields_for :users do |f| %>
+  <%= f.hidden_field user_ids: params[:user_id]%>
+  <%end%> -->
+<!-- <%=f.hidden_field :user_id%> -->
