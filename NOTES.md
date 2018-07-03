@@ -9,6 +9,9 @@ Things to Do:
 [] Validations for Genre
 [] Update a user
 [] Update a book
+[] Make sure the create and edit forms can only be edited by the correct user
+[] Make sure the follow button doesn't pop up for the author themselves
+[] Is the book.users << current_user safe?
 [] Genre Creation - NOT RIGHT NOW
 [] Creating Basic Layout Page for all pages
 [] Getting functional view pages
