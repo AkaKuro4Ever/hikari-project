@@ -1,6 +1,7 @@
 Things to Do:
 - HOW to GET ALERT: working??? Or flash working???
 - ASKING TOMORROW: How to have omniauth not upset has_secure_password
+- Why does before_create function for creating books as well as creating users?! Need to get validations working with book creation
 [] Need to be able to update Users - need to validate on users being updated
 [] Validations for User
 [] Ability to Change password
