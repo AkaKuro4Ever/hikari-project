@@ -1,11 +1,5 @@
-
-<%if logged_in? && @book.users.find_by(id: current_user.id)%>
-
 <%=form_for @book do |f|%>
   <%= render partial: "form", :locals=>{:f=>f} %>
   <%=f.submit%>
   <%end%>
-
-<%else%>
-  Sorry, this page is off limits for now. Head back and read some awesome new books!
 <%end%>

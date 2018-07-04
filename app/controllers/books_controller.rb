@@ -3,6 +3,7 @@ class BooksController < ApplicationController
   def index
     if params[:user_id]
       @books = User.find_by(id: params[:user_id]).books
+      @user = User.find_by(id: params[:user_id])
     else
       @books = Book.all
     end
@@ -30,14 +31,15 @@ class BooksController < ApplicationController
   end
 
   def edit
-    @book = Book.find_by(id: params[:id])
     if params[:user_id]
-    user = User.find_by(id: params[:user_id])
-      if user.nil?
+    @user = User.find_by(id: params[:user_id])
+      if @user.nil?
         redirect_to users_path, alert: "Author not found."
+      elsif  @book = @user.books.find_by(id: params[:id]) && @book.nil?
+
+        redirect_to user_books_path(@user), alert: "Post not found."
       else
-        @book = user.books.find_by(id: params[:id])
-        redirect_to author_posts_path(author), alert: "Post not found." if @post.nil?
+        redirect_to user_books_path(@user) if logged_in? && !!@book.users.find_by(id: current_user.id)
       end
     else
     @post = Post.find(params[:id])
@@ -47,6 +49,7 @@ class BooksController < ApplicationController
   def update
     #Get update logic going
     @book = Book.find_by(id: params[:id])
+    @book.update()
     redirect_to book_path(@book)
   end
 

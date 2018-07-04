@@ -1,5 +1,4 @@
 <%if logged_in? && current_user==@user%>
-  <h3>Welcome back, <%=@user.username%></h3>
     <%=link_to "Create a New Story", new_user_book_path(@user)%>
     <br></br>
 
