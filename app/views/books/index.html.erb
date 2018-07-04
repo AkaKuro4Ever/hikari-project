@@ -1,10 +1,8 @@
 <%@books.each do |book|%>
-  <h3><%=book.title%></h3>
+  <h3><%=link_to book.title, book_path(book)%></h3>
   <%book.users.uniq.each do |user|%>
-    <%=user.username%>
+    <%= user.username if user.username != nil || ""%>
   <%end%>
   <%=book.summary%>
 <%end%>
-
-#Make sure to figure out the nested route for books!! Also, should we use any of the partials in users folder?
 #Also, how to differentiate between books of users to read vs books of users to write?

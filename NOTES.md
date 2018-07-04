@@ -9,6 +9,7 @@ Things to Do:
 [] Validations for Genre
 [] Update a user
 [] Update a book
+[]ADD VALIDATION SO AN AUTHOR CAN'T HAVE 2 BOOKS WITH THE SAME TITLE
 [] Make sure the create and edit forms can only be edited by the correct user
 [] Make sure the follow button doesn't pop up for the author themselves
 [] Is the book.users << current_user safe?
@@ -123,8 +124,9 @@ User_controller:
 
 #OR def unfollow(book_id) user.following_relationships.find_by(following_id: book_id).destroy
 
-
-<!-- <%= f.fields_for :users do |f| %>
+#views/books/show.html.erb
+#<%=link_to user.username, user_path(user) if UserBook.find_by(user_id: user.id, book_id: @book.id)%>
+#<!-- <%= f.fields_for :users do |f| %>
   <%= f.hidden_field user_ids: params[:user_id]%>
   <%end%> -->
-<!-- <%=f.hidden_field :user_id%> -->
+#<!-- <%=f.hidden_field :user_id%> -->

@@ -11,5 +11,6 @@ class Book < ApplicationRecord
   has_many :followers, through:  :follower_relationships, source: :follower
 
   validates :title, presence: true
+  #ADD VALIDATION SO AN AUTHOR CAN'T HAVE 2 BOOKS WITH THE SAME TITLE
   validates :user_ids, presence: true
 end
