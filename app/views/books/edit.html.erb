@@ -1,5 +1,5 @@
 
-<%if logged_in? && @book.users.find(current_user.id)%>
+<%if logged_in? && @book.users.find_by(id: current_user.id)%>
 
 <%=form_for @book do |f|%>
   <%= render partial: "form", :locals=>{:f=>f} %>

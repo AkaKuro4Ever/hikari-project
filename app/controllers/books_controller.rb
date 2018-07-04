@@ -31,7 +31,17 @@ class BooksController < ApplicationController
 
   def edit
     @book = Book.find_by(id: params[:id])
-    #MODIFYING NESTED RESOURCES HAS STUFF YOU NEED TO DO HERE!!
+    if params[:user_id]
+    user = User.find_by(id: params[:user_id])
+      if user.nil?
+        redirect_to users_path, alert: "Author not found."
+      else
+        @book = user.books.find_by(id: params[:id])
+        redirect_to author_posts_path(author), alert: "Post not found." if @post.nil?
+      end
+    else
+    @post = Post.find(params[:id])
+    end
   end
 
   def update
