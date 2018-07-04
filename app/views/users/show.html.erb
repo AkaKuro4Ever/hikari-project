@@ -11,3 +11,5 @@ Your Stories:
 <h2><%=@user.username%>'s Stories</h2>
     <%=render partial: 'written-story-list', locals: {user: @user}%>
 <%end%>
+<br></br>
+<%=link_to "Edit User Profile", edit_user_path(@user)%>

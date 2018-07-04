@@ -1,6 +1,4 @@
-<%if logged_in?%>
-  <%=link_to 'logout', logout_path, method: :post%>
-<%else%>
+<%if !logged_in?%>
   <%=form_for @user do |f|%>
     <%= render :partial => "form", :locals=>{:f=>f} %>
     <%=f.label :password_confirmation%>

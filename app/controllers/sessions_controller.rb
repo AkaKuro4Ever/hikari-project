@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
 
     redirect_to user_path(@user)
     else
-      render '/signup'
+      render :new
     end
   end
 
@@ -28,7 +28,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session.delete :user_id
-    redirect_to '/signup'
+    redirect_to signup_path
   end
 
   private

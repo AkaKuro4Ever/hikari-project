@@ -25,12 +25,14 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find_by(id: params[:id])
-    #ADD EDITING LOGIC
+    if @user.nil?
+      redirect_to users_path, alert: "Author not found."
+    end
   end
 
   def update
     @user = User.find_by(id: params[:id])
-
+    @user.update(user_params)
     redirect_to user_path(@user)
   end
 
