@@ -32,15 +32,12 @@ class BooksController < ApplicationController
 
   def edit
     if params[:user_id]
-      binding.pry
     @user = User.find_by(id: params[:user_id])
       if @user.nil?
         redirect_to users_path, alert: "Author not found."
       elsif  !@book = @user.books.find_by(id: params[:id])
-        binding.pry
         redirect_to user_books_path(@user), alert: "Book not found."
       else
-        binding.pry
         redirect_to user_books_path(@user) if logged_in? && !@book.users.find_by(id: current_user.id)
       end
     else
