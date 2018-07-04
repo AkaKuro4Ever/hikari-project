@@ -46,13 +46,14 @@ class BooksController < ApplicationController
   end
 
   def update
-    #Get update logic going
     @book = Book.find_by(id: params[:id])
-    @book.update()
+    @book.update(book_params)
     redirect_to book_path(@book)
   end
 
   def destroy
+    @user = User.find_by(username: params[:username])
+    @user.destroy
   end
 
   def follow
@@ -70,6 +71,6 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:id, :title, genre_ids: [], user_ids: [])
+    params.require(:book).permit(:id, :title, :summary, genre_ids: [], user_ids: [])
   end
 end

@@ -1,6 +1,7 @@
 Things to Do:
 - HOW to GET ALERT: working??? Or flash working???
 [] Validations for User
+[] Ability to Change password
 [] Validations for New Book
 [] Creating New Book (Must be nested only - check if book can be initialized on its own)
 [] Creating New User

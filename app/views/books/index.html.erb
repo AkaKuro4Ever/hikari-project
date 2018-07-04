@@ -1,8 +1,9 @@
-<h3><%=@user.username%>'s Works</h3>
+<h3><%=@user.username + "'s Works" if @user%></h3>
 <%@books.each do |book|%>
   <h3><%=link_to book.title, book_path(book)%></h3>
   <%book.users.uniq.each do |user|%>
-    <%= user.username if user.username != nil || ""%>
+    <%= "Author: " + user.username if user.username%>
   <%end%>
-  <%=book.summary%>
+  <br>
+  <%= "Summary: " + book.summary if book.summary%>
 <%end%>

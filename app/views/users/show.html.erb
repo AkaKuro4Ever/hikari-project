@@ -2,13 +2,12 @@
     <%=link_to "Create a New Story", new_user_book_path(@user)%>
     <br></br>
 
+Your Stories:
   <%=render partial: 'written-story-list', locals: {user: @user}%>
 
-<%else%>
-  <h2><%=@user.username%></h2>
   <%=render partial: 'story_list', locals: {user: @user}%>
-<%end%>
 
-<%if logged_in?%>
-  <%=link_to 'logout', logout_path, method: :post%>
+<%else%>
+<h2><%=@user.username%>'s Stories</h2>
+    <%=render partial: 'written-story-list', locals: {user: @user}%>
 <%end%>
