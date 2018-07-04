@@ -13,4 +13,8 @@ class Book < ApplicationRecord
   validates :title, presence: true
   #ADD VALIDATION SO AN AUTHOR CAN'T HAVE 2 BOOKS WITH THE SAME TITLE
   validates :user_ids, presence: true
+
+  def self.favs
+     includes(:genres).where(genres: {name: "Yaoi"})
+  end
 end

@@ -68,10 +68,13 @@ class BooksController < ApplicationController
     redirect_to book_path(@book)
   end
 
+  def hikari_faves
+    @books = Book.favs
+  end
+
   private
 
   def book_params
     params.require(:book).permit(:id, :title, :summary, genre_ids: [], user_ids: [])
   end
-
 end
