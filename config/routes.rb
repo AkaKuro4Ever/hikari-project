@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'
   get '/login' => 'sessions#new'
   post '/logout' => 'sessions#destroy'
+  get '/auth/facebook/callback' => 'sessions#create_FB'
   root 'application#index'
   post '/follow/:id' => 'books#follow', as: :follow
   post '/unfollow/:id' => 'books#unfollow', as: :unfollow

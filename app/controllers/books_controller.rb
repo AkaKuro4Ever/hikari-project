@@ -14,9 +14,10 @@ class BooksController < ApplicationController
   end
 
   def create
-
+    binding.pry
     @book = Book.new(book_params)
     @book.users << current_user
+    #Trouble is right HERE. Can do the above action, but @book.invalid? => true
     if @book.invalid?
 
       render :new

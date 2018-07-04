@@ -131,3 +131,13 @@ User_controller:
   <%= f.hidden_field user_ids: params[:user_id]%>
   <%end%> -->
 #<!-- <%=f.hidden_field :user_id%> -->
+#
+  # has_many :followers, class_name: 'FollowingFollower', foreign_key: :following_id
+  # has_many :follows, through: :followers, source: :follower
+
+  #has_many :following, class_name: 'FollowingFollower', foreign_key: :follower_id
+
+# ActiveRecord::HasManyThroughSourceAssociationNotFoundError: Could not find the source association(s) :following_followers in model FollowingFollower. Try 'has_many :followers, :through => :follower_relationships, :source => <name>'. Is it one of follower or following?
+#You don't need the foreign_keys for it to work
+# has_many :follower_relationships, foreign_key: :following_id, class_name: 'FollowingFollower'
+# has_many :followers, through: :follower_relationships, source: :follower
