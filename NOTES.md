@@ -7,7 +7,8 @@ Things to Do:
 [X] Delete Book
 [] Delete title attribute for comments
 [] Delete authors table
-[] Adding comments
+[X] Adding comments
+[X] Deleting Comments (ONLY IN THE VIEW is it authorized, no model or controller methods checking authorization)
 [X] Can assign Book to a Genre
 [] Get OmniAuth working with FB
 [] Need to Get Comments Listed and Working
