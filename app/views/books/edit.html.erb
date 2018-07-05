@@ -2,3 +2,7 @@
   <%= render partial: "form", :locals=>{:f=>f} %>
   <%=f.submit%>
 <%end%>
+<%= form_tag ({controller: 'books', action: 'destroy', method: 'delete'}) do %>
+    <input id="hidden" type="hidden" name="_method" value="DELETE">
+    <input type=submit value='Delete Story'>
+<%end%>

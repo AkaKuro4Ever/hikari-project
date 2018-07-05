@@ -1,7 +1,8 @@
 <%books.each do |book|%>
   <h3><%=link_to book.title, book_path(book)%></h3>
-  <%book.users.uniq.each do |user|%>
-    <%= "Author: " if user.username%> <%=link_to user.username, user_path(user) if user.username%>
+  <%=book.users.uniq.count ==1 ? "Author:" : "Authors:"%>
+  <%book.users.uniq.each do |user| %>
+    <%=link_to user.username, user_path(user) if book.users%></h3>
   <%end%>
   <br>
   <%= "Summary: " + book.summary if book.summary%>

@@ -5,6 +5,8 @@ Things to Do:
   -Before_create triggers during creation of any model, not the specific model it's validating
 [] Need to be able to update Users - need to validate on users being updated
 [] Validations for User
+[] Delete Book
+[] Need to Get Comments Listed and Working
 [] Ability to Change password
 [] Validations for New Book
 [] Creating New Book (Must be nested only - check if book can be initialized on its own)

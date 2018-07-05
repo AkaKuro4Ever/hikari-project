@@ -16,6 +16,7 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     @book.users << current_user
+
     if @book.invalid?
 
       render :new
@@ -51,8 +52,10 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    @user = User.find_by(username: params[:username])
-    @user.destroy
+    @book = Book.find_by(id: params[:id])
+    @book.destroy
+
+    redirect_to books_path
   end
 
   def follow

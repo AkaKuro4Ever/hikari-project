@@ -37,6 +37,8 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    @user = User.find_by(username: params[:username])
+    @user.destroy
     redirect_to '/'
   end
 
