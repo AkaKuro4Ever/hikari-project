@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_05_223712) do
+ActiveRecord::Schema.define(version: 2018_07_05_223946) do
 
   create_table "book_genres", force: :cascade do |t|
     t.integer "book_id"
@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(version: 2018_07_05_223712) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.string "title"
     t.text "content"
     t.integer "book_id"
     t.integer "user_id"

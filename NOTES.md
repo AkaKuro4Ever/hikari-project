@@ -5,13 +5,13 @@ Things to Do:
 
 [X] Validations for User
 [X] Delete Book
-[] Delete title attribute for comments
-[] Delete authors table
+[X] Delete title attribute for comments
+[X] Delete authors table
 [X] Adding comments
 [X] Deleting Comments (ONLY IN THE VIEW is it authorized, no model or controller methods checking authorization)
 [X] Can assign Book to a Genre
 [] Get OmniAuth working with FB
-[] Need to Get Comments Listed and Working
+[X] Need to Get Comments Listed and Working
 [X] Ability to Change password
 [X] Validations for New Book
 [X] Creating New Book (Must be nested only - check if book can be initialized on its own)
