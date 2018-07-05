@@ -4,8 +4,11 @@ Rails.application.routes.draw do
     resources :books, only: [:new, :show, :index, :edit]
   end
   resources :genres, only: [:index, :create, :show]
-  resources :books, only: [:index, :show, :create, :update, :destroy]
+  resources :books, only: [:index, :show, :create, :update, :destroy] do
+    resources :comments, only: [:create]
+  end
   resources :sessions, only: [:create]
+
   #Remember to put indexes for each genre
   get '/signup' => 'users#new'
   get '/login' => 'sessions#new'

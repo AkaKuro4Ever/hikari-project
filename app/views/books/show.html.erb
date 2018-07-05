@@ -1,16 +1,27 @@
 <h2><%=@book.title%></h2>
 <h3>
+<!--BOOK INFO-->
   <%=@book.users.uniq.count ==1 ? "Author:" : "Authors:"%>
     <%@book.users.uniq.each do |user| %>
   <%=link_to user.username, user_path(user) if @book.users%></h3>
   <%end%>
-
+<!--SUMARY AND GENRE-->
 <p><%="Summary: " if @book.summary%><%=@book.summary%></p>
 <p><%="Genre: " if @book.genres.uniq.count != 0%><%@book.genres.each do |g|%>
     <%=g.name%></p>
   <%end%>
+<!--LIST COMMENTS-->
 <%=render partial: 'comments/comments_list', locals: {comments: @book.comments}%>
+<!--LIST ADDING COMMENTS-->
 
+<%= form_tag ({controller: 'comments', action: 'create', method: 'post'}) do %>
+  <%= text_field_tag "content" %>
+  <%= hidden_field_tag "user_id", "#{current_user.id}"%>
+  <%= hidden_field_tag "book_id", "#{@book.id}"%>
+  <input type=submit value='Comment'>
+<% end %>
+
+<!--LIST EDITING-->
   <%=link_to "Edit", edit_user_book_path(current_user, @book) if current_user.books.find_by(id: @book.id)%>
-
+<!--FOLLOW BUTTON-->
   <%=render partial: 'follow_books', locals: {book: @book} if !current_user.books.find_by(id: @book.id)%>
