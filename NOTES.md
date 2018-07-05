@@ -5,8 +5,10 @@ Things to Do:
 
 [X] Validations for User
 [X] Delete Book
+[] Delete title attribute for comments
+[] Delete authors table
 [] Adding comments
-[] Can assign Book to a Genre
+[X] Can assign Book to a Genre
 [] Get OmniAuth working with FB
 [] Need to Get Comments Listed and Working
 [X] Ability to Change password

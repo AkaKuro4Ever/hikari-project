@@ -4,10 +4,12 @@
     <%@book.users.uniq.each do |user| %>
   <%=link_to user.username, user_path(user) if @book.users%></h3>
   <%end%>
+
 <p><%="Summary: " if @book.summary%><%=@book.summary%></p>
 <p><%="Genre: " if @book.genres.uniq.count != 0%><%@book.genres.each do |g|%>
     <%=g.name%></p>
   <%end%>
+<%=render partial: 'comments/comments_list', locals: {comments: @book.comments}%>
 
   <%=link_to "Edit", edit_user_book_path(current_user, @book) if current_user.books.find_by(id: @book.id)%>
 
