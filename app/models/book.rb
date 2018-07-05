@@ -17,4 +17,8 @@ class Book < ApplicationRecord
   def self.favs
      includes(:genres).where(genres: {name: "Yaoi"})
   end
+
+  def self.delete_empties
+    Book.all.where(title: nil).delete_all
+  end
 end
