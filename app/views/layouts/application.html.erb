@@ -11,6 +11,7 @@
 
   <body>
     <class = "Hello">
+      <%=link_to "All Books", books_path%>
       <%if logged_in?%>
         <h3>Welcome, <%=link_to current_user.username, user_path(current_user)%></h3>
         <%=link_to 'logout', logout_path, method: :post%>
