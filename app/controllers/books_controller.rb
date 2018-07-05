@@ -1,5 +1,10 @@
 class BooksController < ApplicationController
 
+before_action :require_login
+skip_before_action :require_login, only: [:index, :show]
+before_action :set_book
+skip_before_action :set_book, only: [:new, :create, :index, :edit, :hikari_faves]
+
   def index
     if params[:user_id]
       @books = User.find_by(id: params[:user_id]).books
@@ -14,20 +19,16 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book = Book.new(book_params)
-    @book.users << current_user
-
+    @book = Book.create(book_params)
     if @book.invalid?
-
       render :new
     else
-      @book.save
-      redirect_to book_path(@book)
+     @book.users << current_user if @book.save
+     redirect_to book_path(@book)
     end
   end
 
   def show
-    @book = Book.find_by(id: params[:id])
   end
 
   def edit
@@ -46,26 +47,22 @@ class BooksController < ApplicationController
   end
 
   def update
-    @book = Book.find_by(id: params[:id])
     @book.update(book_params)
     redirect_to book_path(@book)
   end
 
   def destroy
-    @book = Book.find_by(id: params[:id])
     @book.destroy
 
     redirect_to books_path
   end
 
   def follow
-    @book = Book.find_by(id: params[:id])
     @book.followers << current_user if !current_user.following.find_by(id: @book.id)
     redirect_to book_path(@book)
   end
 
   def unfollow
-    @book = Book.find_by(id: params[:id])
     current_user.following.delete(Book.find(@book.id)) if current_user.following.find_by(id: @book.id)
     redirect_to book_path(@book)
   end
@@ -75,6 +72,14 @@ class BooksController < ApplicationController
   end
 
   private
+
+  def require_login
+    redirect_to login_path if !logged_in?
+  end
+
+  def set_book
+    @book = Book.find_by(id: params[:id])
+  end
 
   def book_params
     params.require(:book).permit(:id, :title, :summary, genre_ids: [], user_ids: [])

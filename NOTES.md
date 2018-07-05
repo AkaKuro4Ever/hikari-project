@@ -7,6 +7,7 @@ Things to Do:
 [] Need to be able to update Users - need to validate on users being updated
 [] Validations for User
 [] Delete Book
+[] Can assign Book to a Genre
 [] Deleting User route exists but is NOT IMPLEMENTED
 [] User can't have two books named the same thing? Should we even bother with that? Probably unecessary
 [] Need to Get Comments Listed and Working
