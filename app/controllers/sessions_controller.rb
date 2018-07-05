@@ -35,5 +35,6 @@ class SessionsController < ApplicationController
 
   def auth
     request.env['omniauth.auth']
+    @called_omniauth = true
   end
 end

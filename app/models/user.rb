@@ -13,10 +13,15 @@ class User < ApplicationRecord
   before_create validates :password, presence: true, confirmation: true, on: :create
   before_create validates :password_confirmation, presence: true, on: :create
 
+  validates_presence_of :password, :on => :create, :if => :password_required
   # def validate_updated_user
   #   self.username.present?
   #   self.password.present?
   #   self.password_confirmation.present? &&  self.password_confirmation == self.password
   # end
+
+  def password_required
+    false if @called_omniauth == true
+  end
 
 end
