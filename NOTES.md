@@ -1,15 +1,15 @@
 Things to Do:
 - HOW to GET ALERT: working??? Or flash working???
-- ASKING TOMORROW: How to have omniauth not upset has_secure_password
-- Why does before_create function for creating books as well as creating users?! Need to get validations working with book creation
-  -Before_create triggers during creation of any model, not the specific model it's validating
+- ASKING TOMORROW: How to have omniauth not upset has_secure_password. Get password_digest to make a random string
 
 [] Need to be able to update Users - need to validate on users being updated
 [] Validations for User
 [] Delete Book
+[] Adding comments
 [] Can assign Book to a Genre
+[] We DON'T HAVE a validation for confirming uniqueness on updated stuff, if the username or email has already been used for someone else
 [] Deleting User route exists but is NOT IMPLEMENTED
-[] User can't have two books named the same thing? Should we even bother with that? Probably unecessary
+[] User can't have two books named the same thing? Should we even bother with that? Probably unnecessary
 [] Need to Get Comments Listed and Working
 [] Ability to Change password
 [] Validations for New Book

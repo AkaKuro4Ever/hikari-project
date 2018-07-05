@@ -12,7 +12,7 @@ class User < ApplicationRecord
   before_create validates :email, presence: true, uniqueness: true, on: :create
   before_create validates :password, presence: true, confirmation: true, on: :create
   before_create validates :password_confirmation, presence: true, on: :create
-  #
+
   # def validate_updated_user
   #   self.username.present?
   #   self.password.present?
