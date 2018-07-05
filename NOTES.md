@@ -3,6 +3,7 @@ Things to Do:
 - ASKING TOMORROW: How to have omniauth not upset has_secure_password
 - Why does before_create function for creating books as well as creating users?! Need to get validations working with book creation
   -Before_create triggers during creation of any model, not the specific model it's validating
+
 [] Need to be able to update Users - need to validate on users being updated
 [] Validations for User
 [] Delete Book
