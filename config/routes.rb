@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get '/auth/facebook/callback' => 'sessions#create_FB'
   root 'application#index'
   post '/follow/:id' => 'books#follow', as: :follow
+  post '/delete_comment' => 'comments#destroy', as: :destroy
   post '/unfollow/:id' => 'books#unfollow', as: :unfollow
   get '/hikari_faves' => 'books#hikari_faves'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

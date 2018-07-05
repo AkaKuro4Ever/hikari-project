@@ -11,7 +11,9 @@
     <%=g.name%></p>
   <%end%>
 <!--LIST COMMENTS-->
+
 <%=render partial: 'comments/comments_list', locals: {comments: @book.comments}%>
+
 <!--LIST ADDING COMMENTS-->
 
 <%= form_tag ({controller: 'comments', action: 'create', method: 'post'}) do %>

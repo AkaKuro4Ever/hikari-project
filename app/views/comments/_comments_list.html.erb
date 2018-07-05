@@ -1,5 +1,14 @@
 <h3>Comments:</h3>
 <%comments.each_with_index do |comment, i|%>
-  <p><%=i+1%>. <%=comment.content%></p> <%=link_to comment.user.username, user_path(comment.user)%></h3>
-  <br>
+  <p><%=i+1%>. <%=comment.content%>
+    <br> <%=link_to comment.user.username, user_path(comment.user)%>
+
+  <%if comment.user == current_user%>
+  <%= form_tag ({controller: 'comments', action: 'destroy', method: 'delete'}) do %>
+    <%= hidden_field_tag "comment_id", "#{comment.id}"%>
+      <input id="hidden" type="hidden" name="_method" value="DELETE">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type=submit value='Delete'>
+    <%end%>
+  <%end%></p>
 <%end%>
