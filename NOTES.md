@@ -1,46 +1,42 @@
 Things to Do:
 - HOW to GET ALERT: working??? Or flash working???
 - ASKING TOMORROW: How to have omniauth not upset has_secure_password. Get password_digest to make a random string
+*** Need to ask about users/new route and why it exists. How to deal with obvious route urls if you don't want them to exist? (ex. books/new)***
 
-[] Need to be able to update Users - need to validate on users being updated
-[] Validations for User
-[] Delete Book
+[X] Validations for User
+[X] Delete Book
 [] Adding comments
 [] Can assign Book to a Genre
+[] Get OmniAuth working with FB
+[] Need to Get Comments Listed and Working
+[X] Ability to Change password
+[X] Validations for New Book
+[X] Creating New Book (Must be nested only - check if book can be initialized on its own)
+[X] Creating New User
+[X] Add differentiation for user.books (for read books vs written books - something similar to follower/following??)
+[X] Validations for Genre
+[X] Update a user
+[X] Update a book
+[X] Make sure the create and edit forms can only be edited by the correct user
+[X] Make sure the follow button doesn't pop up for the author themselves
+[X] Is the book.users << current_user safe?
+[X] Creating Basic Layout Page for all pages
+[X] Getting functional view pages
+[X] View Pages are limited by authorization (User Partials and Locals, which go in view folders)
+[X] Figure out User being Writer or Reader
+[X] Figure out a user collection for books they're following vs books they've written (currently, user.books == books that they've written)
+  [X] We'll need links for all book editing vs links for all books that they're following
+[X] Get Login and Signup functional
+[X] Get authorizations on what pages can be seen when logged in and when not
+[X] Validations and forms on creating a new book
+
+Functions NOT Implemented:
+[X] Genre Creation - Not for the public
 [] We DON'T HAVE a validation for confirming uniqueness on updated stuff, if the username or email has already been used for someone else
 [] Deleting User route exists but is NOT IMPLEMENTED
+[] ADD VALIDATION SO AN AUTHOR CAN'T HAVE 2 BOOKS WITH THE SAME TITLE
 [] User can't have two books named the same thing? Should we even bother with that? Probably unnecessary
-[] Need to Get Comments Listed and Working
-[] Ability to Change password
-[] Validations for New Book
-[] Creating New Book (Must be nested only - check if book can be initialized on its own)
-[] Creating New User
-[] Add differentiation for user.books (for read books vs written books - something similar to follower/following??)
-[] Sign up and Log In and Log Out
-[] Validations for Genre
-[] Update a user
-[] Update a book
-[]ADD VALIDATION SO AN AUTHOR CAN'T HAVE 2 BOOKS WITH THE SAME TITLE
-[] Make sure the create and edit forms can only be edited by the correct user
-[] Make sure the follow button doesn't pop up for the author themselves
-[] Is the book.users << current_user safe?
-[] Genre Creation - NOT RIGHT NOW
-[] Creating Basic Layout Page for all pages
-[] Getting functional view pages
-[] View Pages are limited by authorization (User Partials and Locals, which go in view folders)
-[] Figure out User being Writer or Reader
-[] Getting comments functional
-[] Figure out a user collection for books they're following vs books they've written (currently, user.books == books that they've written)
-  [] We'll need links for all book editing vs links for all books that they're following
-Get Login and Signup functional
-Get authorizations on what pages can be seen when logged in and when not
-Validations and forms on creating a new book
-
-
-***Need to ask about books/new and book/edit form due to the user_ids hidden field not holding the user id from before. Do we need nested_attributes macro or some kind of writer method?
-*** In addition, can it even work? Later on, we'll need to have a user be able to access user.books for reading AND writing
-*** Need to ask about users/new route and why it exists. How to deal with obvious route urls if you don't want them to exist? (ex. books/new)***
-IF they're a writer, they should have access to 'writer.hikari.com/users/1' writer portal or hikari.com/users/writer/1'
+[] IF they're a writer, they should have access to 'writer.hikari.com/users/1' writer portal or hikari.com/users/writer/1'
 
 OVERVIEW
 In this lesson you're going to build a complete Ruby on Rails application that manages related data through complex forms and RESTful routes. The goal of the application is to build a Content Management System, whether the content being managed is Blog Posts, Recipes, a Library of Resources, or any domain model that lends itself to these requirements (the majority of ideas you could come up with would probably meet the requirements).

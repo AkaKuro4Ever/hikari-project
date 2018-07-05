@@ -20,6 +20,7 @@ skip_before_action :set_book, only: [:new, :create, :index, :edit, :hikari_faves
 
   def create
     @book = Book.create(book_params)
+    binding.pry
     if @book.invalid?
       render :new
     else

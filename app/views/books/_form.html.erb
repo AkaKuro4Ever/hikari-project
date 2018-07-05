@@ -14,3 +14,5 @@
   <%=f.label :summary%>
   <%=f.text_area :summary%>
   <br></br>
+
+  Genre: <%= f.collection_check_boxes :genre_ids, Genre.all, :id, :name %>

@@ -4,7 +4,11 @@
     <%@book.users.uniq.each do |user| %>
   <%=link_to user.username, user_path(user) if @book.users%></h3>
   <%end%>
-<p><%=@book.summary%></p>
+<p><%="Summary: " if @book.summary%><%=@book.summary%></p>
+<p><%="Genre: " if @book.genres.uniq.count != 0%><%@book.genres.each do |g|%>
+    <%=g.name%></p>
+  <%end%>
+
   <%=link_to "Edit", edit_user_book_path(current_user, @book) if current_user.books.find_by(id: @book.id)%>
 
   <%=render partial: 'follow_books', locals: {book: @book} if !current_user.books.find_by(id: @book.id)%>
