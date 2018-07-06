@@ -9,7 +9,6 @@ Things to Do:
 - [X] Adding comments
 - [X] Deleting Comments (ONLY IN THE VIEW is it authorized, no model or controller methods checking authorization)
 - [X] Can assign Book to a Genre
-- [] Get OmniAuth working with FB
 - [X] Need to Get Comments Listed and Working
 - [X] Ability to Change password
 - [X] Validations for New Book
