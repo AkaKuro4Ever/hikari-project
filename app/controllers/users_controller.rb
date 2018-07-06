@@ -18,7 +18,6 @@ class UsersController < ApplicationController
     end
   end
 
-
   def show
     @user = User.find_by(id: params[:id])
   end
@@ -27,6 +26,8 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
     if @user.nil?
       redirect_to users_path, alert: "Author not found."
+    elsif !@user.uid.nil?
+      redirect_to user_path(@user)
     end
   end
 

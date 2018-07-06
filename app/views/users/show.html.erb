@@ -12,4 +12,6 @@ Your Stories:
     <%=render partial: 'written-story-list', locals: {user: @user}%>
 <%end%>
 <br></br>
-<%=link_to "Edit User Profile", edit_user_path(@user)%>
+<%if @user.uid == nil%>
+  <%=link_to "Edit User Profile", edit_user_path(@user)%>
+<%end%>

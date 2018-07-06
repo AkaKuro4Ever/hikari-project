@@ -14,13 +14,21 @@ class SessionsController < ApplicationController
       render :new
     end
   end
-
+# #PASTED CODE
+#   def create
+#    user = #User.from_omniauth(request.env["omniauth.auth"])
+#    User.find_by_provider_and_password_digest(auth["provider"], request.env["omniauth.auth"]["uid"]) || create_with_omniauth(auth)
+#    session[:user_id] = user.id
+#    redirect_to root_url, notice: "Signed in"
+#  end
+# #PASTED CODE
   def create_FB
     @user = User.find_or_create_by(uid: auth['uid']) do |u|
       u.username = auth['info']['name']
       u.email = auth['info']['email']
+      u.password = auth['uid']
+      u.password_confirmation = auth['uid']
     end
-    binding.pry
     session[:user_id] = @user.id
 
     redirect_to user_path(@user)
@@ -35,6 +43,5 @@ class SessionsController < ApplicationController
 
   def auth
     request.env['omniauth.auth']
-    @called_omniauth = true
   end
 end
