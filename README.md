@@ -1,25 +1,12 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Welcome to the Hikari Project - Ruby on Rails version.
 
-Things you may want to cover:
+It lets you publish basics about stories, lets you follow other people's work, and comment on their postings.
 
-* Ruby version
+To run this project, clone this repo, run 'bundle install', and then 'rails s'. It should be up and running on the localhost:3000 if you're in the terminal (necessary for the FB login).
 
-* System dependencies
+Currently using the gem ruby '2.3.3', ActiveRecord Migration is Version 5.2
+Dependent on Rails, omniauth, bcrypt, and rack. See Gemfile for more details.
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
 # hikari-project
