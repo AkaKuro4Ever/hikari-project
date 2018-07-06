@@ -1,8 +1,7 @@
 Things to Do:
 - HOW to GET ALERT: working??? Or flash working???
-- ASKING TOMORROW: How to have omniauth not upset has_secure_password. Get password_digest to make a random string
 *** Need to ask about users/new route and why it exists. How to deal with obvious route urls if you don't want them to exist? (ex. books/new)***
-
+- [X] Get Omniauth FB functional
 - [X] Validations for User
 - [X] Delete Book
 - [X] Delete title attribute for comments
