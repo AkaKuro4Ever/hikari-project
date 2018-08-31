@@ -12,6 +12,7 @@ skip_before_action :set_book, only: [:new, :create, :index, :edit, :hikari_faves
     else
       @books = Book.all
     end
+    # render json: @books
   end
 
   def new
@@ -29,6 +30,7 @@ skip_before_action :set_book, only: [:new, :create, :index, :edit, :hikari_faves
   end
 
   def show
+    render json: @book
   end
 
   def edit

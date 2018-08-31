@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
 
+before_action :set_user
+skip_before_action :set_user, only: [:destroy, :create, :index, :new]
+
   def index
     @users = User.all
   end
@@ -19,11 +22,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(id: params[:id])
+    render json: @user
   end
 
   def edit
-    @user = User.find_by(id: params[:id])
     if @user.nil?
       redirect_to users_path, alert: "Author not found."
     elsif !@user.uid.nil?
@@ -32,7 +34,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find_by(id: params[:id])
     @user.update(user_params)
     if @user.valid?
       redirect_to user_path(@user)
@@ -48,15 +49,18 @@ class UsersController < ApplicationController
   end
 
   def blog
-    @user = User.find_by(id: params[:id])
   end
 
   def editblog
-    @user = User.find_by(id: params[:id])
     redirect_to blog_path if @user != current_user
   end
 
   private
+
+  def set_user
+    @user = User.find_by(id: params[:id])
+  end
+
   def user_params
     params.require(:user).permit(:id, :email, :username, :password, :password_confirmation)
   end

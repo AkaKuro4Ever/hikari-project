@@ -8,10 +8,35 @@ Your Stories:
   <%=render partial: 'story_list', locals: {user: @user}%>
 
 <%else%>
-<h2><%=@user.username%>'s Stories</h2>
-    <%=render partial: 'written-story-list', locals: {user: @user}%>
+<h2><%=@user.username%>'s Featured Stories</h2>
+  <div>
+    <h3 class="book-name"></h3>
+    <p class="book-author"></p>
+    <p class="book-summary"></p>
+    <p class="book-genre"></p>
+  </div>
+  <a href="#" class="js-next" data-id="<%=book.id%>">Next</a>
+  <a href="#" class="js-all">All Stories</a>
+  <!-- <button class="js-all">View the Books <%=@user.username%> is Following</button> -->
+    <!-- <%=render partial: 'written-story-list', locals: {user: @user}%> -->
 <%end%>
 <br></br>
-<%if @user.uid == nil%>
+<%if @user.uid == nil && @user ==current_user%>
   <%=link_to "Edit User Profile", edit_user_path(@user)%>
 <%end%>
+
+<script type="text/javascript" charset="utf-8">
+$(function() {
+  (".js-next").on("click", function() {
+    var nextId = parseInt($(".js-next").attr("data-id")) + 1;
+    $.get("/books/"+id, function(data) {
+      let book = data['data']['attributes']
+      $(".book-name").html(book['title'])
+      $(".book-author").html(book['user-ids'])
+      $(".book-genre").html(book['genre-ids'])
+      $(".book-summary").html(book['summary'])
+      $(".js-next").attr("data-id", data['data']["id"]);
+    }
+  })
+}
+</script>

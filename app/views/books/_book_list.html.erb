@@ -1,11 +1,12 @@
 <%books.each do |book|%>
   <h3><%=link_to book.title, book_path(book)%></h3>
-  <%=book.users.uniq.count ==1 ? "Author:" : "Authors:"%>
+  <h3><%=book.users.uniq.count ==1 ? "Author:" : "Authors:"%>
   <%book.users.uniq.each do |user| %>
     <%=link_to user.username, user_path(user) if book.users%></h3>
   <%end%>
   <br>
-  <%= "Summary: " + book.summary if book.summary%>
+  <p>
+  <%= "Summary: " + book.summary if book.summary%></p>
   <br>
   <%="Genre: " if book.genres.uniq.count != 0%><%book.genres.each do |g|%>
       <%=link_to g.name, genre_path(g)%>

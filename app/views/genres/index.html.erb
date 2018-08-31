@@ -1,4 +1,35 @@
+<h2>Pick a Genre</h2>
+
 <%@genres.each do |genre|%>
+  <a href="#" class="js-genre" data-id="<%=genre.id%>"><%=genre.name%></a>
+  <br></br>
+<%end%>
+  <strong><p id="book-title" data-id=""></p></strong>Written by:<p id="book-authors"></p><p id="book-summary"></p><br></br>
+<h3 class="genre-name"></h3>
+  <script type="text/javascript" charset="utf-8">
+
+  var large = '<strong><p id="book-title" data-id=""></p></strong>Written by:<p id="book-authors"></p><p id="book-summary"></p><br></br>';
+
+  $(function() {
+    $(".js-genre").on("click", function() {
+      $(document.body).append(large)
+      let id = $(this).data("id")
+      $.get("/genres/"+id, function(data) {
+      let books = data['data']['relationships']['books']['data'];
+      for (const element of books) {
+          $.get("/books/"+element.id, function(bookData) {
+
+            $("#book-title").attr("data-id", parseInt(bookData['data']['id']))
+            $("#book-title").html(bookData['data']["attributes"]["title"])
+            // $(".book-authors").text(bookData['data']['relationships']["users"]['data'])
+            $("#book-summary").html(bookData['data']["attributes"]["summary"])
+          }
+        )}
+        })
+      })
+    })
+  </script>
+<!-- <%@genres.each do |genre|%>
   <h3><%=genre.name%></h3>
   <%genre.books.each do |book|%>
     <strong><p><%=book.title%></p></strong>
@@ -9,4 +40,4 @@
     <%=book.summary%>
     <br></br>
   <%end%>
-<%end%>
+<%end%> -->

@@ -1,4 +1,4 @@
-  <%user.books.each do |book|%>
-    <%=link_to book.title, edit_user_book_path(user, book)%>
-    <br></br>
-  <%end%>
+<%user.books.each do |book|%>
+  <%=link_to book.title, edit_user_book_path(user, book)%>
+  <br></br>
+<%end%>
