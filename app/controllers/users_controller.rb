@@ -47,6 +47,15 @@ class UsersController < ApplicationController
     redirect_to '/'
   end
 
+  def blog
+    @user = User.find_by(id: params[:id])
+  end
+
+  def editblog
+    @user = User.find_by(id: params[:id])
+    redirect_to blog_path if @user != current_user
+  end
+
   private
   def user_params
     params.require(:user).permit(:id, :email, :username, :password, :password_confirmation)

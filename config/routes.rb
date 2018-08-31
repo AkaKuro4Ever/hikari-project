@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   post '/delete_comment' => 'comments#destroy', as: :destroy
   post '/unfollow/:id' => 'books#unfollow', as: :unfollow
   get '/hikari_faves' => 'books#hikari_faves'
+  get '/users/:id/blog' => 'users#blog', as: :blog
+  get '/users/:id/blog/edit' => 'users#editblog', as: :edit_blog
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 # The priority is based upon order of creation: first created -> highest priority.
