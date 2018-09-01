@@ -9,34 +9,51 @@ Your Stories:
 
 <%else%>
 <h2><%=@user.username%>'s Featured Stories</h2>
+<%book = @user.books.first%>
   <div>
-    <h3 class="book-name"></h3>
-    <p class="book-author"></p>
-    <p class="book-summary"></p>
-    <p class="book-genre"></p>
+    <h3 class="book-name"><%=book.title%></h3>
+    <p class="book-summary"><%=book.summary%></p>
+    <p class="book-genre"><p><%="Genre: " if book.genres.uniq.count != 0%><%book.genres.each do |g|%>
+        <%=g.name%></p>
+      <%end%></p>
   </div>
-  <a href="#" class="js-next" data-id="<%=book.id%>">Next</a>
+  <a href="#" class="js-next" data-id="<%=@user.books.first.id%>">Next</a>
   <a href="#" class="js-all">All Stories</a>
-  <!-- <button class="js-all">View the Books <%=@user.username%> is Following</button> -->
-    <!-- <%=render partial: 'written-story-list', locals: {user: @user}%> -->
 <%end%>
 <br></br>
+
 <%if @user.uid == nil && @user ==current_user%>
   <%=link_to "Edit User Profile", edit_user_path(@user)%>
 <%end%>
 
 <script type="text/javascript" charset="utf-8">
+
+function getNextId() {
+  let Id = parseInt($(".js-next").attr("data-id"))
+  debugger
+  let newIndex = <%=@book_ids%>.indexOf(Id) + 1;
+  return <%=@book_ids%>[newIndex]
+}
+
 $(function() {
-  (".js-next").on("click", function() {
-    var nextId = parseInt($(".js-next").attr("data-id")) + 1;
-    $.get("/books/"+id, function(data) {
+  $(".js-next").on("click", function() {
+    debugger
+    let nextId = getNextId();
+    $.get("/books/"+nextId, function(data) {
+      debugger
       let book = data['data']['attributes']
       $(".book-name").html(book['title'])
-      $(".book-author").html(book['user-ids'])
       $(".book-genre").html(book['genre-ids'])
       $(".book-summary").html(book['summary'])
-      $(".js-next").attr("data-id", data['data']["id"]);
-    }
-  })
-}
+      $(".js-next").attr("data-id", nextId);
+      debugger
+    })
+  });
+});
 </script>
+
+
+
+
+<!-- <button class="js-all">View the Books <%=@user.username%> is Following</button> -->
+  <!-- <%=render partial: 'written-story-list', locals: {user: @user}%> -->

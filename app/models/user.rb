@@ -19,4 +19,10 @@ class User < ApplicationRecord
   #   self.password.present?
   #   self.password_confirmation.present? &&  self.password_confirmation == self.password
   # end
+
+  def user_book_ids
+    self.books.uniq.collect do |book|
+      book.id
+    end
+  end
 end

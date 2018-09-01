@@ -22,7 +22,8 @@ skip_before_action :set_user, only: [:destroy, :create, :index, :new]
   end
 
   def show
-    render json: @user
+    @book_ids = @user.user_book_ids
+    # render json: @user
   end
 
   def edit
