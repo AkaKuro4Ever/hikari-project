@@ -14,16 +14,13 @@
 
 <%=render partial: 'comments/comments_list', locals: {comments: @book.comments}%>
 
+<% if logged_in?%>
 <!--LIST ADDING COMMENTS-->
 
-<%= form_tag ({controller: 'comments', action: 'create', method: 'post'}) do %>
-  <%= text_field_tag "content" %>
-  <%= hidden_field_tag "user_id", "#{current_user.id}"%>
-  <%= hidden_field_tag "book_id", "#{@book.id}"%>
-  <input type=submit value='Comment'>
-<% end %>
+<%=render partial: 'comments/add_comments', locals: {comments: @book.comments}%>
 
 <!--LIST EDITING-->
   <%=link_to "Edit", edit_user_book_path(current_user, @book) if current_user.books.find_by(id: @book.id)%>
 <!--FOLLOW BUTTON-->
   <%=render partial: 'follow_books', locals: {book: @book} if !current_user.books.find_by(id: @book.id)%>
+<%end%>

@@ -1,0 +1,26 @@
+<%= form_tag ({controller: "comments", action: "create", method: "post"}) do %>
+  <%= text_field_tag "content" %>
+  <%= hidden_field_tag "user_id", "#{current_user.id}"%>
+  <%= hidden_field_tag "book_id", "#{@book.id}"%>
+  <input type=submit value='Comment'>
+<% end %>
+
+<!-- Problems here: -->
+<!-- - Since there are forms for both posting and destroying comments, the script can't define which is which, so both forms get sent to the same script. Cannot get form to add a class or id name, even with research
+- The line: ` var posting = $.post('/comments', values)` is aborted, even though the terminal actually does create the new comment every time -->
+<script type="text/javascript" charset="utf-8">
+  $(function () {
+    $('form').submit(function(event) {
+      event.preventDefault();
+      var values = $(this).serialize();
+      var posting = $.post('/comments', values);
+      debugger
+      posting.done(function(data) {
+        var comment = data['data'];
+        document.getElementsByName("comment_id")[document.getElementsByName("comment_id").length -1].value = comment["id"]
+        $("#comment-content").text(post["attributes"]['content']);
+        $("#comment-username").text(post["relationships"]["user"]["data"]["id"]);
+      });
+    });
+  });
+</script>

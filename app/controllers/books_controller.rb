@@ -6,13 +6,16 @@ before_action :set_book
 skip_before_action :set_book, only: [:new, :create, :index, :edit, :hikari_faves]
 
   def index
+    @user = User.find_by(id: params[:user_id])
     if params[:user_id]
       @books = User.find_by(id: params[:user_id]).books
-      @user = User.find_by(id: params[:user_id])
+    elsif params[:genre_id]
+      @books = Genre.find_by(id: params[:genre_id]).books
+      render json: @books
     else
       @books = Book.all
     end
-    # render json: @books
+
   end
 
   def new
@@ -30,7 +33,10 @@ skip_before_action :set_book, only: [:new, :create, :index, :edit, :hikari_faves
   end
 
   def show
-    render json: @book
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @book}
+    end
   end
 
   def edit

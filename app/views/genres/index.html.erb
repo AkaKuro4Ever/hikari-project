@@ -4,32 +4,30 @@
   <a href="#" class="js-genre" data-id="<%=genre.id%>"><%=genre.name%></a>
   <br></br>
 <%end%>
-  <strong><p id="book-title" data-id=""></p></strong>Written by:<p id="book-authors"></p><p id="book-summary"></p><br></br>
-<h3 class="genre-name"></h3>
+  <div class="js-genre-books"></div>
+  <!-- <strong><p id="book-title" data-id=""></p></strong>Written by:<p id="book-authors"></p><p id="book-summary"></p><br></br>
+<h3 class="genre-name"></h3>-->
   <script type="text/javascript" charset="utf-8">
 
-  var large = '<strong><p id="book-title" data-id=""></p></strong>Written by:<p id="book-authors"></p><p id="book-summary"></p><br></br>';
 //Problem: Cannot figure out how to add in a new block so that the new data only goes to that next block. Keeps replacing, I think
+//Also, cannot figure out how to use ruby and javascript to summon the genre and author names instead of the attribute ids in a concise way
+//Also, should it always be put as a script in these view pages? Should it be put in the asset/javascripts files?
 
-  $(function() {
-    $(".js-genre").on("click", function() {
-      $(document.body).append(large)
-      let id = $(this).data("id")
-      $.get("/genres/"+id, function(data) {
-      let books = data['data']['relationships']['books']['data'];
-      for (const element of books) {
-          $.get("/books/"+element.id, function(bookData) {
-
-            $("#book-title").attr("data-id", parseInt(bookData['data']['id']))
-            $("#book-title").html(bookData['data']["attributes"]["title"])
-            // $(".book-authors").text(bookData['data']['relationships']["users"]['data'])
-            $("#book-summary").html(bookData['data']["attributes"]["summary"])
-          }
-        )}
+$(function() {
+  $(".js-genre").on("click", function() {
+    let id = $(this).data("id")
+    $.get("/genres/"+id+"/books", function(data) {
+    let books = data['data'];
+    debugger
+    books.forEach(function (element) {
+      debugger
+      var large = `<strong><p id="book-title" data-id="${parseInt(element['id'])}">${element["attributes"]["title"]}</p></strong>Written by:<p id="book-authors">${element['attributes']['users']}</p><p id="book-summary">${element["attributes"]["summary"]}</p><br></br>`;
+      $('.js-genre-books').append(large)
         })
       })
     })
-  </script>
+  })
+</script>
 <!-- <%@genres.each do |genre|%>
   <h3><%=genre.name%></h3>
   <%genre.books.each do |book|%>
@@ -42,3 +40,9 @@
     <br></br>
   <%end%>
 <%end%> -->
+<!-- document.getElementsByClassName('js-genre-books')
+ $("#book-title").attr("data-id", parseInt(bookData['data']['id']))
+ $("#book-title").html(bookData['data']["attributes"]["title"])
+ $(".book-authors").text(bookData['data']['relationships']["users"]['data'])
+ $("#book-summary").html(bookData['data']["attributes"]["summary"])
+$(document.body).append(large) -->

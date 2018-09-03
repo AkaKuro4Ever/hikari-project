@@ -25,4 +25,9 @@ class User < ApplicationRecord
       book.id
     end
   end
+
+  def author_list
+    self.map do |user_id|  User.find_by(id: user_id).username
+    end
+  end
 end

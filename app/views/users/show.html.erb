@@ -27,24 +27,26 @@ Your Stories:
 <%end%>
 
 <script type="text/javascript" charset="utf-8">
-
+//PROBLEM CURRENTLY: The text does change, but immediately resets to the original text right before end of call
 function getNextId() {
   let Id = parseInt($(".js-next").attr("data-id"))
   debugger
   let newIndex = <%=@book_ids%>.indexOf(Id) + 1;
-  return <%=@book_ids%>[newIndex]
+  if (<%=@book_ids%>.length === 1) {
+    return Id
+  } else return <%=@book_ids%>[newIndex]
 }
 
 $(function() {
-  $(".js-next").on("click", function() {
+  $('.js-next').on('click', function() {
     debugger
     let nextId = getNextId();
-    $.get("/books/"+nextId, function(data) {
+    $.get("/books/"+nextId+".json", function(data) {
       debugger
       let book = data['data']['attributes']
-      $(".book-name").html(book['title'])
-      $(".book-genre").html(book['genre-ids'])
-      $(".book-summary").html(book['summary'])
+      $(".book-name").text(book["title"])
+      $(".book-genre").text(book["genre-ids"])
+      $(".book-summary").text(book["summary"])
       $(".js-next").attr("data-id", nextId);
       debugger
     })

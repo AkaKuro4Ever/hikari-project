@@ -1,14 +1,31 @@
 <h3>Comments:</h3>
 <%comments.each_with_index do |comment, i|%>
-  <p><%=i+1%>. <%=comment.content%>
-    <br> <%=link_to comment.user.username, user_path(comment.user)%>
+<div class="comment" data-id="<%=comment.id%>">
+<%=i+1%>.<p id="comment-content"><%=comment.content%></p>
+    <p id="comment-username"><%=link_to comment.user.username, user_path(comment.user)%></p>
 
   <%if comment.user == current_user%>
-  <%= form_tag ({controller: 'comments', action: 'destroy', method: 'delete'}) do %>
-    <%= hidden_field_tag "comment_id", "#{comment.id}"%>
+    <%= form_tag ({controller: 'comments', action: 'destroy', method: 'delete'}) do %>
+    <p><%= hidden_field_tag "comment_id", "#{comment.id}"%>
       <input id="hidden" type="hidden" name="_method" value="DELETE">
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
       <input type=submit value='Delete'>
     <%end%>
-  <%end%></p>
+  <%end%>
+  </p>
+  </div>
 <%end%>
+
+<!-- <script type="text/javascript" charset="utf-8">
+  $(function () {
+    $('form').submit(function(event) {
+      //prevent form from submitting the default way
+      event.preventDefault();
+      let commentId = parseInt(document.getElementsByName("comment_id")[0].value)
+      var posting = $.delete('/comments', values);
+      posting.done(function(data) {
+        $('[data-id=]').remove();
+      });
+    });
+  });
+</script> -->
