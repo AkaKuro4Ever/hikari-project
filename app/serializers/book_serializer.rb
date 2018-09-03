@@ -1,6 +1,6 @@
 class BookSerializer < ActiveModel::Serializer
   attributes :id, :title, :summary
-  has_many :users, serializer: UserSerializer
+  # has_many :users, serializer: UserSerializer
 
   attribute :users do
       array = object.user_ids.map do |user_id|
