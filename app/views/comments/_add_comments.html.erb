@@ -14,12 +14,12 @@
       event.preventDefault();
       var values = $(this).serialize();
       var posting = $.post('/comments', values);
-      debugger
       posting.done(function(data) {
+        debugger
         var comment = data['data'];
         document.getElementsByName("comment_id")[document.getElementsByName("comment_id").length -1].value = comment["id"]
-        $("#comment-content").text(post["attributes"]['content']);
-        $("#comment-username").text(post["relationships"]["user"]["data"]["id"]);
+        $("#comment-content").text(comment["attributes"]['content']);
+        $("#comment-username").text(comment["relationships"]["user"]["data"]["id"]);
       });
     });
   });

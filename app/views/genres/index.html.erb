@@ -5,22 +5,18 @@
   <br></br>
 <%end%>
   <div class="js-genre-books"></div>
-  <!-- <strong><p id="book-title" data-id=""></p></strong>Written by:<p id="book-authors"></p><p id="book-summary"></p><br></br>
-<h3 class="genre-name"></h3>-->
-  <script type="text/javascript" charset="utf-8">
-
-//Problem: Cannot figure out why html keeps disappearing before end of call block
-//Also, should it always be put as a script in these view pages? Should it be put in the asset/javascripts files?
+  <!-- //Problem: Cannot figure out why html keeps disappearing before end of call block
+  //Also, should it always be put as a script in these view pages? Should it be put in the asset/javascripts files? -->
+<script type="text/javascript" charset="utf-8">
 
 $(function() {
-  $(".js-genre").on("click", function() {
+  $(".js-genre").on("click", function(e) {
+    e.preventDefault()
     $(".js-genre-books").empty();
     let id = $(this).data("id")
     $.get("/genres/"+id+"/books", function(data) {
     let books = data['data'];
-    debugger
     books.forEach(function (element) {
-      debugger
       let authorArray = element['attributes']['users']
       var large = `<strong><p id="book-title" data-id="${parseInt(element['id'])}">${element["attributes"]["title"]}</p></strong>Written by:<p id="book-authors">${authorArray.join(", ")}</p><p id="book-summary">${element["attributes"]["summary"]}</p><br></br>`;
       $('.js-genre-books').append(large)

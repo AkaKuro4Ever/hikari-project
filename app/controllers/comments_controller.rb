@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
 
   def create
-    comment = Comment.create(comments_params)
+    @comment = Comment.create(comments_params)
 
     # redirect_to book_path(comment.book)
     render json: @comment, status: 201

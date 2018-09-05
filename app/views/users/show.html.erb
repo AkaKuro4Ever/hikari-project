@@ -30,7 +30,6 @@ Your Stories:
 //PROBLEM CURRENTLY: The text does change, but immediately resets to the original text right before end of call. Disappears before end of call block
 function getNextId() {
   let Id = parseInt($(".js-next").attr("data-id"))
-  debugger
   let newIndex = <%=@book_ids%>.indexOf(Id) + 1;
   if (<%=@book_ids%>.length === 1) {
     return Id
@@ -38,17 +37,15 @@ function getNextId() {
 }
 
 $(function() {
-  $('.js-next').on('click', function() {
-    debugger
+  $('.js-next').on('click', function(e) {
+    e.preventDefault()
     let nextId = getNextId();
     $.get("/books/"+nextId+".json", function(data) {
-      debugger
       let book = data['data']['attributes']
       $(".book-name").text(book["title"])
-      $(".book-genre").text(book["genre-ids"])
+      $(".book-genre").text(book["genres"].join(", "))
       $(".book-summary").text(book["summary"])
       $(".js-next").attr("data-id", nextId);
-      debugger
     })
   });
 });
