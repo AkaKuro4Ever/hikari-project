@@ -20,11 +20,11 @@
         debugger
         let contentLine = document.createElement("p");
         $(contentLine).attr('id', "comment-content");
-        $("#comment-content").text(comment["attributes"]['content']);
+        $(contentLine).text(comment["attributes"]['content']);
 
         let usernameLine = document.createElement("p");
         $(usernameLine).attr("id", "comment-username");
-        $("#comment-username").text(comment["attributes"]["user"]);
+        $(usernameLine).text(comment["attributes"]["user"]);
         let id = parseInt(comment["id"])
         $(block).attr("data-id", id)
         $(block).addClass("js-comment")

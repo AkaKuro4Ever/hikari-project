@@ -27,7 +27,7 @@ Your Stories:
 <%end%>
 
 <script type="text/javascript" charset="utf-8">
-//PROBLEM CURRENTLY: The text does change, but immediately resets to the original text right before end of call. Disappears before end of call block
+
 function getNextId() {
   let Id = parseInt($(".js-next").attr("data-id"))
   debugger
@@ -51,9 +51,5 @@ $(function() {
   });
 });
 </script>
-
-
-
-
 <!-- <button class="js-all">View the Books <%=@user.username%> is Following</button> -->
   <!-- <%=render partial: 'written-story-list', locals: {user: @user}%> -->
