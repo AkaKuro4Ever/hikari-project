@@ -3,16 +3,14 @@ class BookSerializer < ActiveModel::Serializer
   # has_many :users, serializer: UserSerializer
 
   attribute :users do
-      array = object.user_ids.map do |user_id|
-        User.find_by(id: user_id).username
-      end
-      array.uniq
+    object.user_ids.uniq.map do |user_id|
+      User.find_by(id: user_id).username
     end
+  end
 
   attribute :genres do
-      array = object.genre_ids.map do |genre_id|
-        Genre.find_by(id: genre_id).name
-      end
-      array.uniq
+    object.genre_ids.uniq.map do |genre_id|
+      Genre.find_by(id: genre_id).name
     end
+  end
 end

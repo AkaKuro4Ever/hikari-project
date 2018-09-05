@@ -14,13 +14,15 @@
 
 $(function() {
   $(".js-genre").on("click", function() {
+    $(".js-genre-books").empty();
     let id = $(this).data("id")
     $.get("/genres/"+id+"/books", function(data) {
     let books = data['data'];
     debugger
     books.forEach(function (element) {
       debugger
-      var large = `<strong><p id="book-title" data-id="${parseInt(element['id'])}">${element["attributes"]["title"]}</p></strong>Written by:<p id="book-authors">${element['attributes']['users']}</p><p id="book-summary">${element["attributes"]["summary"]}</p><br></br>`;
+      let authorArray = element['attributes']['users']
+      var large = `<strong><p id="book-title" data-id="${parseInt(element['id'])}">${element["attributes"]["title"]}</p></strong>Written by:<p id="book-authors">${authorArray.join(", ")}</p><p id="book-summary">${element["attributes"]["summary"]}</p><br></br>`;
       $('.js-genre-books').append(large)
         })
       })
