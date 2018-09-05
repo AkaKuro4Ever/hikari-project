@@ -7,7 +7,7 @@
 
 <!-- Problems here: -->
 <!-- - Since there are forms for both posting and destroying comments, the script can't define which is which, so both forms get sent to the same script. Cannot get form to add a class or id name, even with research
-- The line: ` var posting = $.post('/comments', values)` is aborted, even though the terminal actually does create the new comment every time -->
+-->
 <script type="text/javascript" charset="utf-8">
   $(function () {
     $('form').submit(function(event) {
@@ -16,22 +16,28 @@
       var posting = $.post('/comments', values);
       posting.done(function(data) {
         let comment = data['data'];
+        let id = parseInt(comment["id"])
         let block = document.createElement("div");
+        block.innerHTML = "<%=@book.comments.length+1%>."
         debugger
+
         let contentLine = document.createElement("p");
         $(contentLine).attr('id', "comment-content");
         $(contentLine).text(comment["attributes"]['content']);
 
         let usernameLine = document.createElement("p");
         $(usernameLine).attr("id", "comment-username");
-        $(usernameLine).text(comment["attributes"]["user"]);
-        let id = parseInt(comment["id"])
+        $(usernameLine).text(comment["attributes"]['user']);
+        //This is an attempt to get 'NUMBER. COMMENT'
+        // $(usernameLine).text(`${id} ${comment["attributes"]["user"]}`);
+        ///
         $(block).attr("data-id", id)
-        $(block).addClass("js-comment")
+        $(block).addClass("comment")
         debugger
         $(block).append(contentLine)
         $(block).append(usernameLine)
-        document.body.append(block)
+        $('.js-comment').append(block)
+        $('form input[type="text"]').val('');
       });
     });
   });

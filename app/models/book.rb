@@ -18,4 +18,9 @@ class Book < ApplicationRecord
   def self.delete_empties
     Book.all.where(title: nil).delete_all
   end
+
+  def commenter_ids
+    binding.pry
+    self.comments.map {|c| c.user_id}
+  end
 end

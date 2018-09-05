@@ -1,6 +1,7 @@
 <h3>Comments:</h3>
+<div class="js-comment">
 <%comments.each_with_index do |comment, i|%>
-<div class="js-comment" data-id="<%=comment.id%>">
+<div class="comment" data-id="<%=comment.id%>">
 <%=i+1%>.<p id="comment-content"><%=comment.content%></p>
     <p id="comment-username"><%=link_to comment.user.username, user_path(comment.user)%></p>
 
@@ -15,7 +16,7 @@
   </p>
   </div>
 <%end%>
-
+</div>
 <!-- <script type="text/javascript" charset="utf-8">
   $(function () {
     $('form').submit(function(event) {
