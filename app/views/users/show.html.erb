@@ -30,6 +30,7 @@ Your Stories:
 //PROBLEM CURRENTLY: The text does change, but immediately resets to the original text right before end of call. Disappears before end of call block
 function getNextId() {
   let Id = parseInt($(".js-next").attr("data-id"))
+  debugger
   let newIndex = <%=@book_ids%>.indexOf(Id) + 1;
   if (<%=@book_ids%>.length === 1) {
     return Id
