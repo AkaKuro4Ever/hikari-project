@@ -15,11 +15,23 @@
       var values = $(this).serialize();
       var posting = $.post('/comments', values);
       posting.done(function(data) {
-        debugger
-        var comment = data['data'];
-        document.getElementsByName("comment_id")[document.getElementsByName("comment_id").length -1].value = comment["id"]
+        let comment = data['data'];
+        let block = document.createElement("div");
+
+        let contentLine = document.createElement("p");
+        contentLine.attr('id', "comment-content");
         $("#comment-content").text(comment["attributes"]['content']);
-        $("#comment-username").text(comment["relationships"]["user"]["data"]["id"]);
+
+        let usernameLine = document.createElement("p");
+        usernameLine.attr("id", "comment-username");
+        $("#comment-username").text(comment["attributes"]["user"]);
+        let id = parseInt(comment["id"])
+        block.attr("data-id", id)
+        block.addClass("js-comment")
+
+        $("[data-id=`id`]").append(contentLine)
+        $("[data-id=`id`]").append(usernameLine)
+        document.body.append(block)
       });
     });
   });
