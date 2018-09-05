@@ -28,11 +28,12 @@
         let id = parseInt(comment["id"])
         $(block).attr("data-id", id)
         $(block).addClass("js-comment")
-
-        $("[data-id=`id`]").append(contentLine)
-        $("[data-id=`id`]").append(usernameLine)
+        debugger
+        $(block).append(contentLine)
+        $(block).append(usernameLine)
         document.body.append(block)
       });
     });
   });
 </script>
+<!-- "[data-id=`id`]" -->
