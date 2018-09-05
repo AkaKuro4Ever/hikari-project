@@ -17,17 +17,17 @@
       posting.done(function(data) {
         let comment = data['data'];
         let block = document.createElement("div");
-
+        debugger
         let contentLine = document.createElement("p");
-        contentLine.attr('id', "comment-content");
+        $(contentLine).attr('id', "comment-content");
         $("#comment-content").text(comment["attributes"]['content']);
 
         let usernameLine = document.createElement("p");
-        usernameLine.attr("id", "comment-username");
+        $(usernameLine).attr("id", "comment-username");
         $("#comment-username").text(comment["attributes"]["user"]);
         let id = parseInt(comment["id"])
-        block.attr("data-id", id)
-        block.addClass("js-comment")
+        $(block).attr("data-id", id)
+        $(block).addClass("js-comment")
 
         $("[data-id=`id`]").append(contentLine)
         $("[data-id=`id`]").append(usernameLine)
