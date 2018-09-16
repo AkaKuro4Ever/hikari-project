@@ -5,7 +5,7 @@ Specs:
 - [X] Include a show resource rendered using jQuery and an Active Model Serialization JSON backend.
 - [X] Include an index resource rendered using jQuery and an Active Model Serialization JSON backend.
 - [X] Include at least one has_many relationship in information rendered via JSON and appended to the DOM.
-- [ ] Use your Rails API and a form to create a resource and render the response without a page refresh.
+- [X] Use your Rails API and a form to create a resource and render the response without a page refresh.
 - [X] Translate JSON responses into js model objects.
 - [X] At least one of the js model objects must have at least one method added by your code to the prototype.
 
@@ -23,6 +23,6 @@ Requirements from Learn Lesson:
 
 3) [X] The rails API must reveal at least one has-many relationship in the JSON that is then rendered to the page. For example if each of those posts has many comments, you could render those comments as well on that show page.
 
-4) [ ] Must use your Rails API and a form to create a resource and render the response without a page refresh. For example, a user might be able to add a comment to a post, and the comment would be serialized, and submitted via an AJAX POST request, with the response being the new object in JSON and then appending that new comment to the DOM using JavaScript (ES6 Template Literals can help out a lot with this).
+4) [X] Must use your Rails API and a form to create a resource and render the response without a page refresh. For example, a user might be able to add a comment to a post, and the comment would be serialized, and submitted via an AJAX POST request, with the response being the new object in JSON and then appending that new comment to the DOM using JavaScript (ES6 Template Literals can help out a lot with this).
 
 5) [X] Must translate the JSON responses into Javascript Model Objects. The Model Objects must have at least one method on the prototype. Formatters work really well for this. Borrowing from the previous example, instead of plainly taking the JSON response of the newly created comment and appending it to the DOM, you would create a Comment prototype object and add a function to that prototype to perhaps concatenate (format) the comments authors first and last name. You would then use the object to append the comment information to the DOM.
