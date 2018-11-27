@@ -15,30 +15,52 @@
       var values = $(this).serialize();
       var posting = $.post('/comments', values);
       posting.done(function(data) {
-        let comment = data['data'];
-        let id = parseInt(comment["id"])
+        // this might be an implementation of JS Model Object
+        // let newComment = new Comment(data.data)
+        // ... which might have a prototype method called appendToDom
+        // newComment.appendToDom()
+        //could you move this into a pre-ES6 contructor object?
+
+        debugger
         let block = document.createElement("div");
         block.innerHTML = "<%=@book.comments.length+1%>."
-        debugger
 
         let contentLine = document.createElement("p");
         $(contentLine).attr('id', "comment-content");
-        $(contentLine).text(comment["attributes"]['content']);
 
         let usernameLine = document.createElement("p");
         $(usernameLine).attr("id", "comment-username");
-        $(usernameLine).text(comment["attributes"]['user']);
-        //This is an attempt to get 'NUMBER. COMMENT'
-        // $(usernameLine).text(`${id} ${comment["attributes"]["user"]}`);
-        ///
-        $(block).attr("data-id", id)
-        $(block).addClass("comment")
-        debugger
-        $(block).append(contentLine)
-        $(block).append(usernameLine)
-        $('.js-comment').append(block)
+        let newComment = new Comment(data.data)
+
+        newComment.appendToDom(contentLine, usernameLine, block)
         $('form input[type="text"]').val('');
       });
     });
   });
+
+
+/*
+let comment = data['data'];
+let id = parseInt(comment["id"])
+//This just numbers the comment in the
+  debugger
+let contentLine = document.createElement("p");
+$(contentLine).attr('id', "comment-content");
+
+$(contentLine).text(comment["attributes"]['content']);
+  debugger
+let usernameLine = document.createElement("p");
+$(usernameLine).attr("id", "comment-username");
+$(usernameLine).text(comment["attributes"]['user']);
+//This is an attempt to get 'NUMBER. COMMENT'
+// $(usernameLine).text(`${id} ${comment["attributes"]["user"]}`);
+///
+$(block).attr("data-id", id)
+$(block).addClass("comment")
+  debugger
+$(block).append(contentLine)
+$(block).append(usernameLine)
+$('.js-comment').append(block)
+$('form input[type="text"]').val('');
+*/
 </script>
