@@ -19,8 +19,7 @@
         let id = parseInt(comment["id"])
         let block = document.createElement("div");
         block.innerHTML = "<%=@book.comments.length+1%>."
-        debugger
-
+        
         let contentLine = document.createElement("p");
         $(contentLine).attr('id', "comment-content");
         $(contentLine).text(comment["attributes"]['content']);
