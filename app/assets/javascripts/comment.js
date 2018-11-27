@@ -6,10 +6,8 @@ class Comment {
   }
 
   appendToDom(contentLine, usernameLine, block) {
-    debugger
     $(contentLine).text(this.content);
     $(usernameLine).text(this.username);
-    debugger
     $(block).attr("data-id", this.id)
     $(block).addClass("comment")
     $(block).append(contentLine)
