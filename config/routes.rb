@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   root 'application#index'
   post '/follow/:id' => 'books#follow', as: :follow
   get 'comments/:id/comment_data', to: 'comments#comment_data'
-  post '/delete_comment' => 'comments#destroy', as: :destroy
+  delete '/comments' => 'comments#destroy', as: :destroy
   post '/unfollow/:id' => 'books#unfollow', as: :unfollow
   get '/hikari_faves' => 'books#hikari_faves'
   get '/users/:id/blog' => 'users#blog', as: :blog
