@@ -7,6 +7,7 @@
 
 <!-- Problems here: -->
 <!-- - Since there are forms for both posting and destroying comments, the script can't define which is which, so both forms get sent to the same script. Cannot get form to add a class or id name, even with research
+ALSO - the below runs always because it's always submitting whenever a form is submitted
 -->
 <script type="text/javascript" charset="utf-8">
   $(function () {
@@ -23,7 +24,7 @@
 
         let block = document.createElement("div");
         block.innerHTML = "<%=@book.comments.length+1%>."
-        
+
         let contentLine = document.createElement("p");
         $(contentLine).attr('id', "comment-content");
 
