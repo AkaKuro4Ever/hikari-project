@@ -14,6 +14,10 @@ skip_before_action :set_book, only: [:new, :create, :index, :edit, :hikari_faves
       render json: @books
     else
       @books = Book.all
+      respond_to do |format|
+        format.html { render :index }
+        format.json { render json: @books}
+      end
     end
 
   end
