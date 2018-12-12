@@ -7,7 +7,10 @@ class GenresController < ApplicationController
 
   def show
     @genre = Genre.find_by(id: params[:id])
-    render json: @genre
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @genre}
+    end
   end
 
   def create
