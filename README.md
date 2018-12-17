@@ -16,6 +16,7 @@ Link to Video Walkthrough/Demo: https://youtu.be/6RGluEe6m4M
 Blogposts About the Journey:
 
 https://akakuro4ever.github.io/rails_final_project_-_finally
+
 https://akakuro4ever.github.io/rails_and_javascript_project_reflection
 
 # hikari-project
