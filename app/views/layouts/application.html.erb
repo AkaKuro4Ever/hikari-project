@@ -10,17 +10,15 @@
   </head>
 
   <body>
-    <class = "Hello">
+    <div id="navbar">
       <%=link_to "All Books", books_path%>
       <%if logged_in?%>
         <h3>Welcome, <%=link_to current_user.username, user_path(current_user)%></h3>
         <%=link_to 'logout', logout_path, method: :post%>
       <%else%>
-        <%=link_to "Sign In", login_path%>
-        <%=link_to "Sign Up", signup_path%>
-        <%= link_to('Log in with Facebook!', '/auth/facebook') %>
+        <%=link_to "Log In", login_path%>
       <%end%>
-    </class>
+    </div>
     <%= yield %>
   </body>
 </html>

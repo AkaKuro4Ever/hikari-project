@@ -1,0 +1,5 @@
+<%= form_tag ({controller: "chapters", action: "create", method: "post"}) do %>
+  <%= text_field_tag "content" %>
+  <%= hidden_field_tag "book_id", "#{@book.id}"%>
+  <input type=submit value='Create Chapter'>
+<% end %>

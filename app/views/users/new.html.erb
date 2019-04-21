@@ -1,9 +1,11 @@
 <%if !logged_in?%>
+  <div id=signupForm>
   <%=form_for @user do |f|%>
     <%= render :partial => "form", :locals=>{:f=>f} %>
     <%=f.label :password_confirmation%>
-    <%=f.text_field :password_confirmation%>
+    <%=f.text_field :password_confirmation, placeholder: "Confirm Password"%>
   <br></br>
   <%=f.submit %>
   <%end%>
+  </div>
 <%end%>

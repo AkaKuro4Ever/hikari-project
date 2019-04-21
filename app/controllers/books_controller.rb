@@ -94,6 +94,6 @@ skip_before_action :set_book, only: [:new, :create, :index, :edit, :hikari_faves
   end
 
   def book_params
-    params.require(:book).permit(:id, :title, :summary, genre_ids: [], user_ids: [])
+    params.require(:book).permit(:id, :title, :summary, genre_ids: [], user_ids: [], chapters: [])
   end
 end

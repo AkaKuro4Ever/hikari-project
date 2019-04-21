@@ -7,6 +7,7 @@ class Book < ApplicationRecord
   accepts_nested_attributes_for :users
   has_many :follower_relationships, foreign_key: :following_id, class_name: 'FollowingFollower'
   has_many :followers, through:  :follower_relationships, source: :follower
+  has_many :chapters
 
   validates :title, presence: true
   # validates :user_ids, presence: true

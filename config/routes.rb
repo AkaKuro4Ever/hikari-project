@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :comments
+  resources :chapters
   resources :users, only: [:index, :create, :show, :edit, :destroy, :update] do
     resources :books, only: [:new, :show, :index, :edit]
   end

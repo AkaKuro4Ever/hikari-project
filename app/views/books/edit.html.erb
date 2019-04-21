@@ -2,6 +2,12 @@
   <%= render partial: "form", :locals=>{:f=>f} %>
   <%=f.submit%>
 <%end%>
+
+Create New Chapter
+<%=form_for @book do |f|%>
+  <%= render partial: "add_chapter", :locals=>{:f=>f} %>
+  <%=f.submit%>
+<%end%>
 <%= form_tag ({controller: 'books', action: 'destroy', method: 'delete'}) do %>
     <input id="hidden" type="hidden" name="_method" value="DELETE">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
