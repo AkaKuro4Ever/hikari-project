@@ -9,7 +9,8 @@ To run this project, clone this repo, run `bundle install`, then `bin/rails db:m
 
 It should be up and running on the localhost:3000 if you're in the terminal (necessary for the FB login).
 
-Currently using the gem ruby '2.3.3', ActiveRecord Migration is Version 5.2
+Currently using the gem ruby '2.7.0', ActiveRecord Migration is Version 5.2
+NOTE: Omniauth currently not working due to needing reauthorization on FB Developer (TODO)
 Dependent on Rails, omniauth, bcrypt, and rack. See the Gemfile for more details.
 
 Link to Video Walkthrough/Demo: https://youtu.be/6RGluEe6m4M
